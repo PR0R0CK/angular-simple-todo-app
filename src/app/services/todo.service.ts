@@ -13,7 +13,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TodoService {
-  
   todosUrl: string = 'https://jsonplaceholder.typicode.com/todos';
   todosLimit: string = '?_limit=10';
 
@@ -34,5 +33,10 @@ export class TodoService {
   toggleCompleted(todo: Todo): Observable<any> { 
     const url = `${this.todosUrl}/${todo.id}`;
     return this.http.put(url, todo, httpOptions);
+  }
+
+  //* Adding task to server
+  addTodo(todo:Todo):Observable<Todo> {
+    return this.http.post<Todo>(this.todosUrl, todo, httpOptions);
   }
 }

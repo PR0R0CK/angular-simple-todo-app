@@ -28,4 +28,11 @@ export class TodosComponent implements OnInit {
     
   }
 
+  addTodo(todo: Todo) { 
+    this.todoService.addTodo(todo).subscribe(todo => {
+      //* adding todo to array
+      this.todos.push(todo);
+    });
+  }
+
 }
